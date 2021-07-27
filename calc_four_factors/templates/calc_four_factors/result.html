@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <h1>{{title}}</h1>
+        <h2>略称について</h2>
+            <p>
+            POSS:ポゼッション数 <br>
+            PPP:ポゼッションあたりの得点<br>
+            <br>
+            eFG:3Pを考慮したシュート効率<br>
+            TOV%:シュートを打てずに攻撃が終わる割合<br>
+            ORB%:オフェンスリバウンド獲得率<br>
+            FTR:フィールドゴールの試投がフリースローに繋がった割合
+            </p>
+            <b>{{teamname}}</b>
+            <p>
+                POSS: {{POSS}}<br>
+                PPP: {{PPP}}<br>
+                eFG: {{eFG}}<br>
+                TOV%: {{TOVp}}<br>
+                ORB%: {{ORBp}}<br>
+                FTR: {{FTR}}
+            </p>
+
+            <b>{{opponent}}</b>
+            <p>
+                POSS: {{POSS_opp}}<br>
+                PPP: {{PPP_opp}}<br>
+                eFG: {{eFG_opp}}<br>
+                TOV%: {{TOVp_opp}}<br>
+                ORB%: {{ORBp_opp}}<br>
+                FTR: {{FTR_opp}}
+            </p>
+            <a href="/calc_four_factors/">入力画面に戻る</a>
+    </body>
+</html>
