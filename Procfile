@@ -1,1 +1,1 @@
-web: gunicorn four_factors.wsgi --log-file -
+web: gunicorn four_factors.wsgi
