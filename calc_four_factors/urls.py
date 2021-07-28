@@ -6,3 +6,5 @@ urlpatterns=[
     path("calc_four_factors/result",views.result,name="result"),
     #path("plot/",views.get_svg,name="plot")
 ]
+
+handler500 = views.my_customized_server_error
