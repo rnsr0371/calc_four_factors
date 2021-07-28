@@ -5,10 +5,6 @@ from .forms import CalcForm
 from .models import BasicStat,Team,Four_Factor
 from django.db.models import Max
 
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
-import io
 
 #four factorsを計算する関数を定義する
 def calc_PPP(PTS, POSS):
@@ -34,37 +30,6 @@ def calc_FTR(FTA,F2GA,F3GA):
 def calc_ORBp(ORB,ORB_opp):
     ORBp=ORB/(ORB+ORB_opp)
     return ORBp
-
-#レーダーチャートを描く関数を定義する
-def write_graph(eFG,TOVp,FTR,ORBp):
-    values=np.array([eFG,TOVp,FTR,ORBp])
-    labels=["eFG","TOV%","FTR","ORB%"]
-
-    #多角形を閉じるためにデータの最後に最初の値を追加する
-    radar_values=np.concatenate([values,[values[0]]])
-
-    #プロットする角度を形成する
-    angles=np.linspace(0,2*np.pi,len(labels)+1,endpoint=True)
-    fig=plt.figure(facecolor="w")
-    
-    ax=fig.add_subplot(1,1,1,polar=True)
-    ax.plot(angles,radar_values)
-    ax.fill(angles,radar_values,alpha=0.2)
-    ax.set_thetagrid(angles[:-1]*180/np.pi,labels)
-
-    ax.set_title("Four Factors",pad=20)
-
-#SVG化
-def plt2svg():
-    buf=io.BytesIO()
-    plt.savefig(buf,format="svg",bbox_inches="tihgt")
-    s=buf.getvalue()
-    buf.close()
-
-    return s
-
-
-
 
 
 
@@ -154,7 +119,7 @@ def index(request):
 
         return redirect(to="result")
 
-    return render(request,"calc_four_factors/index.html",params)
+    return render(request,"index.html",params)
 
 
 def result(request):
@@ -185,10 +150,6 @@ def result(request):
     ORBp_opp=opp.ORB_Percentage
     FTR_opp=opp.FTR
 
-    #write_graph(eFG,TOVp,FTR,ORBp)
-    #svg=plt2svg()
-    #plt.cla()
-    #response=HttpResponse(svg,content_type="image/svg+xml")
 
     params={
         "title":"Four Factorsを計算するアプリ",
@@ -207,8 +168,5 @@ def result(request):
         "TOVp_opp":TOVp_opp,
         "ORBp_opp":ORBp_opp,
         "FTR_opp":FTR_opp,
-
-        #"response":response,#レーダーチャート
-
     }
-    return render(request,"calc_four_factors/result.html",params)
+    return render(request,"result.html",params)
