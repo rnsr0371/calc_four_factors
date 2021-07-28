@@ -27,8 +27,8 @@ def calc_FTR(FTA,F2GA,F3GA):
     FTR=FTA/(F2GA+F3GA)
     return FTR
 
-def calc_ORBp(ORB,ORB_opp):
-    ORBp=ORB/(ORB+ORB_opp)
+def calc_ORBp(ORB,DRB_opp):
+    ORBp=ORB/(ORB+DRB_opp)
     return ORBp
 
 
@@ -83,7 +83,7 @@ def index(request):
         eFG=calc_eFG(F2GM,F3GM,F2GA,F3GA)
         TOVp=calc_TOVp(TOV,F2GA,F3GA,FTA)
         FTR=calc_FTR(FTA,F2GA,F3GA)
-        ORBp=calc_ORBp(ORB,ORB_opp)
+        ORBp=calc_ORBp(ORB,DRB_opp)
 
         #計算したfour factorsをfour factorに登録
         four_factors=Four_Factor(game_id=BasicStat.objects.order_by("id").last(),
@@ -109,7 +109,7 @@ def index(request):
         eFG_opp=calc_eFG(F2GM_opp,F3GM_opp,F2GA_opp,F3GA_opp)
         TOVp_opp=calc_TOVp(TOV_opp,F2GA_opp,F3GA_opp,FTA_opp)
         FTR_opp=calc_FTR(FTA_opp,F2GA_opp,F3GA_opp)
-        ORBp_opp=calc_ORBp(ORB_opp,ORB)
+        ORBp_opp=calc_ORBp(ORB_opp,DRB)
 
         #計算したfour factorsをfour factorに登録
         four_factors=Four_Factor(game_id=BasicStat.objects.order_by("id").last(),
