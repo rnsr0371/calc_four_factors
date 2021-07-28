@@ -74,12 +74,23 @@ WSGI_APPLICATION = 'four_factors.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'd34e8t1hokkjce',
+            'USER': 'rouklteiunzxvn',
+            'PASSWORD': 'd859f27c635c137435ccf2f9b492430f245523f78d7fca471378b30ab5400928',
+            'HOST': 'ec2-44-194-112-166.compute-1.amazonaws.com',
+            'PORT': '5432',
+            }
+        }
 
 
 import dj_database_url
