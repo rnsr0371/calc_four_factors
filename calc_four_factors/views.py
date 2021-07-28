@@ -68,10 +68,10 @@ def index(request):
         TOV_opp=int(request.POST["TOV_opp"])
 
         #自チームをTeamsに登録 少なくともこれがあると500エラーが出る
-        teams=Team(teamname=team)
+        teams=Team(id=100,teamname=team)
         teams.save()
 
-
+        
         return redirect(to="result")#リダイレクトの処理に問題はない
 
     return render(request,"index.html",params)
