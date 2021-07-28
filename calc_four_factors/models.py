@@ -3,10 +3,12 @@ from django.db import models
 # Create your models here.
 #teamsテーブル
 class Team(models.Model):
+    id=models.AutoField(primary_key=True)
     teamname=models.CharField(max_length=100)
 
 #ベーシックスタッツテーブル
 class BasicStat(models.Model):
+    id=models.AutoField(primary_key=True)
     team_id=models.ForeignKey(Team,on_delete=models.CASCADE)
     #game_id=models.IntegerField()#自動でIDが触れられるので不要
     PTS=models.IntegerField()
@@ -22,6 +24,7 @@ class BasicStat(models.Model):
 
 #Four Factorsテーブル
 class Four_Factor(models.Model):
+    id=models.AutoField(primary_key=True)
     game_id=models.ForeignKey(BasicStat,on_delete=models.CASCADE)
     team_id=models.ForeignKey(Team,on_delete=models.CASCADE)
     PPP=models.DecimalField(max_digits=5,decimal_places=2)
