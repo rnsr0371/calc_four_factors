@@ -154,7 +154,7 @@ def index(request):
 
         return(redirect(to="result"))
 
-    return render(request,"calc_four_factors/index.html",params)
+    return render(request,"index.html",params)
 
 
 def result(request):
