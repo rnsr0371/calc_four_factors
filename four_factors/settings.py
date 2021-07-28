@@ -134,6 +134,8 @@ except ImportError:
     pass
 
 if not DEBUG:
+     SECRET_KEY=os.environ["SECRET_KEY"]
+
+if not DEBUG:
     import django_heroku
-    SECRET_KEY=os.environ["SECRET_KEY"]
     django_heroku.settings(locals())
