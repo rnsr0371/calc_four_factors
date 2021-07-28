@@ -81,21 +81,13 @@ WSGI_APPLICATION = 'four_factors.wsgi.application'
 #    }
 #}
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'd34e8t1hokkjce',
-            'USER': 'rouklteiunzxvn',
-            'PASSWORD': 'd859f27c635c137435ccf2f9b492430f245523f78d7fca471378b30ab5400928',
-            'HOST': 'ec2-44-194-112-166.compute-1.amazonaws.com',
-            'PORT': '5432',
-            }
-        }
-
-
 import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config()
+
+DATABASES = {
+        'default': dj_database_url.config()
+    }
+
 
 
 # Password validation
