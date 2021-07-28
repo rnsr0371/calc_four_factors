@@ -42,7 +42,7 @@ def index(request):
 
     if (request.method == "POST"):
         #自チーム
-        team=request.POST["team"]
+        team=str(request.POST["team"])
         PTS=int(request.POST["PTS"])
         F3GA=int(request.POST["F3GA"])
         F3GM=int(request.POST["F3GM"])
@@ -55,7 +55,7 @@ def index(request):
         TOV=int(request.POST["TOV"])
 
         #相手チーム
-        opponent=request.POST["opponent"]
+        opponent=str(request.POST["opponent"])
         PTS_opp=int(request.POST["PTS_opp"])
         F3GA_opp=int(request.POST["F3GA_opp"])
         F3GM_opp=int(request.POST["F3GM_opp"])
@@ -67,11 +67,11 @@ def index(request):
         DRB_opp=int(request.POST["DRB_opp"])
         TOV_opp=int(request.POST["TOV_opp"])
 
-        #自チームをTeamsに登録
+        #自チームをTeamsに登録 少なくともこれがあると500エラーが出る
         teams=Team(teamname=team)
         teams.save()
 
-        
+
         return redirect(to="result")#リダイレクトの処理に問題はない
 
     return render(request,"index.html",params)
