@@ -152,7 +152,7 @@ def index(request):
         PPP=PPP_opp,POSS=POSS_opp,eFG=eFG_opp,TOV_Percentage=TOVp_opp,ORB_Percentage=ORBp_opp,FTR=FTR_opp)
         four_factors.save()
 
-        return(redirect(to="https://calc-four-factors.herokuapp.com/calc_four_factors/result"))
+        return redirect(to="calc_four_factor/result")
 
     return render(request,"calc_four_factors/index.html",params)
 
