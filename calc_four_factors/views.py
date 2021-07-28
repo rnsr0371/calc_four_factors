@@ -41,9 +41,38 @@ def index(request):
     }
 
     if (request.method == "POST"):
+        #自チーム
+        team=request.POST["team"]
+        PTS=int(request.POST["PTS"])
+        F3GA=int(request.POST["F3GA"])
+        F3GM=int(request.POST["F3GM"])
+        F2GA=int(request.POST["F2GA"])
+        F2GM=int(request.POST["F2GM"])
+        FTA=int(request.POST["FTA"])
+        FTM=int(request.POST["FTM"])
+        ORB=int(request.POST["ORB"])
+        DRB=int(request.POST["DRB"])
+        TOV=int(request.POST["TOV"])
+
+        #相手チーム
+        opponent=request.POST["opponent"]
+        PTS_opp=int(request.POST["PTS_opp"])
+        F3GA_opp=int(request.POST["F3GA_opp"])
+        F3GM_opp=int(request.POST["F3GM_opp"])
+        F2GA_opp=int(request.POST["F2GA_opp"])
+        F2GM_opp=int(request.POST["F2GM_opp"])
+        FTA_opp=int(request.POST["FTA_opp"])
+        FTM_opp=int(request.POST["FTM_opp"])
+        ORB_opp=int(request.POST["ORB_opp"])
+        DRB_opp=int(request.POST["DRB_opp"])
+        TOV_opp=int(request.POST["TOV_opp"])
+
+        #自チームをTeamsに登録
+        teams=Team(teamname=team)
+        teams.save()
+
         
-        return redirect(to="result")
-        #return render(request,"result.html")
+        return redirect(to="result")#リダイレクトの処理に問題はない
 
     return render(request,"index.html",params)
 
